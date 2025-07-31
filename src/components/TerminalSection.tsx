@@ -121,7 +121,7 @@ const TerminalSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
         }
       },
@@ -132,8 +132,13 @@ const TerminalSection = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+      observer.disconnect();
+    };
+  }, [isVisible]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -146,11 +151,19 @@ const TerminalSection = () => {
   }, [isVisible]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || currentCommand === 0) return;
     
     const current = commands[currentCommand];
     typeText(`${current.tech.toLowerCase()}@devops:~$ ${current.command}`);
   }, [currentCommand, isVisible]);
+
+  // Initial command when becoming visible
+  useEffect(() => {
+    if (isVisible && currentCommand === 0) {
+      const current = commands[0];
+      typeText(`${current.tech.toLowerCase()}@devops:~$ ${current.command}`);
+    }
+  }, [isVisible]);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
