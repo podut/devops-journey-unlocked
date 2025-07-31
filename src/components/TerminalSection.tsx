@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Maximize2, Minimize2, X, Terminal } from "lucide-react";
@@ -8,6 +8,8 @@ const TerminalSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const commands = [
     {
@@ -115,18 +117,40 @@ const TerminalSection = () => {
     await new Promise(resolve => setTimeout(resolve, 500));
   };
 
+  // Intersection Observer for scroll-triggered animations
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
     const interval = setInterval(() => {
       setCurrentCommand((prev) => (prev + 1) % commands.length);
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isVisible]);
 
   useEffect(() => {
+    if (!isVisible) return;
+    
     const current = commands[currentCommand];
     typeText(`${current.tech.toLowerCase()}@devops:~$ ${current.command}`);
-  }, [currentCommand]);
+  }, [currentCommand, isVisible]);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -139,7 +163,7 @@ const TerminalSection = () => {
   const current = commands[currentCommand];
 
   return (
-    <section className="py-20 bg-gradient-secondary relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gradient-secondary relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
