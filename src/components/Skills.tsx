@@ -11,8 +11,13 @@ import {
   MonitorSpeaker,
   GitBranch,
   Server,
-  Wrench
+  Wrench,
+  ShieldCheck,
+  ScanLine,
+  Lock,
+  Eye
 } from "lucide-react";
+import DevSecOpsPipeline from "./DevSecOpsPipeline";
 
 const Skills = () => {
   const skillCategories = [
@@ -95,16 +100,61 @@ const Skills = () => {
         { name: "AlertManager", level: 80 },
         { name: "Application Monitoring", level: 83 }
       ]
+    },
+    {
+      title: "DevSecOps & Security",
+      icon: <ShieldCheck className="w-6 h-6" />,
+      skills: [
+        { name: "SAST/DAST/SCA", level: 90 },
+        { name: "OWASP Top 10", level: 95 },
+        { name: "DefectDojo", level: 85 },
+        { name: "GitLeaks", level: 90 }
+      ]
+    },
+    {
+      title: "Vulnerability Management",
+      icon: <ScanLine className="w-6 h-6" />,
+      skills: [
+        { name: "Static Application Security Testing", level: 88 },
+        { name: "Dynamic Application Security Testing", level: 85 },
+        { name: "Software Composition Analysis", level: 90 },
+        { name: "CI/CD Security Integration", level: 92 }
+      ]
+    },
+    {
+      title: "Cloud Security",
+      icon: <Lock className="w-6 h-6" />,
+      skills: [
+        { name: "AWS IAM & Security", level: 92 },
+        { name: "AWS SSM & Secrets Manager", level: 88 },
+        { name: "CloudTrail & CloudWatch", level: 90 },
+        { name: "Compliance as Code", level: 85 }
+      ]
+    },
+    {
+      title: "Kubernetes Security",
+      icon: <Eye className="w-6 h-6" />,
+      skills: [
+        { name: "RBAC & K8s Security", level: 90 },
+        { name: "OPA Gatekeeper", level: 85 },
+        { name: "Istio Service Mesh", level: 80 },
+        { name: "Vault & Secrets Management", level: 88 }
+      ]
     }
   ];
 
   const certifications = [
     "DevOps Professional Bootcamp",
-    "AWS Cloud Practitioner Track",
+    "AWS Cloud Practitioner Track", 
     "Kubernetes Administration",
     "Terraform Infrastructure Automation",
     "Docker Containerization Expert",
-    "Python for DevOps Automation"
+    "Python for DevOps Automation",
+    "DevSecOps Fundamentals",
+    "OWASP Security Expert",
+    "AWS Security Specialist",
+    "Kubernetes Security Professional",
+    "Vulnerability Management Expert"
   ];
 
   return (
@@ -118,11 +168,13 @@ const Skills = () => {
               <span className="bg-gradient-primary bg-clip-text text-transparent"> Expertise</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Comprehensive knowledge across the DevOps toolchain, from infrastructure automation 
-              to monitoring and everything in between.
+              Comprehensive knowledge across the DevOps and DevSecOps toolchain, from infrastructure automation 
+              to security monitoring and everything in between.
             </p>
           </div>
 
+          <DevSecOpsPipeline />
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
             {skillCategories.map((category, index) => (
               <Card key={index} className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 hover:shadow-card">
