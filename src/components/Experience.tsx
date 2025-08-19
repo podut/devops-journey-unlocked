@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react";
+import { Calendar, MapPin, Briefcase, GraduationCap, GitBranch, ExternalLink, Star } from "lucide-react";
 
 const Experience = () => {
   const experiences = [
@@ -63,6 +63,49 @@ const Experience = () => {
     }
   ];
 
+  const gitlabProjects = [
+    {
+      name: "infra-automation",
+      description: "Infrastructure automation using Terraform and Ansible for scalable cloud deployments",
+      stars: 5,
+      lastUpdated: "5 days ago",
+      technologies: ["Terraform", "Ansible", "AWS", "Docker", "CI/CD"],
+      url: "https://gitlab.com/your-username/infra-automation"
+    },
+    {
+      name: "infra-automation-eks",
+      description: "EKS cluster automation and management with Infrastructure as Code",
+      stars: 0,
+      lastUpdated: "1 day ago",
+      technologies: ["EKS", "Kubernetes", "Terraform", "AWS", "Helm"],
+      url: "https://gitlab.com/your-username/infra-automation-eks"
+    },
+    {
+      name: "juice-shop",
+      description: "OWASP Juice Shop security testing and vulnerability assessment pipeline",
+      stars: 9,
+      lastUpdated: "10 hours ago",
+      technologies: ["Security Testing", "OWASP", "CI/CD", "SAST", "DAST"],
+      url: "https://gitlab.com/your-username/juice-shop"
+    },
+    {
+      name: "online-boutique",
+      description: "Microservices deployment and monitoring for Google's Online Boutique demo",
+      stars: 0,
+      lastUpdated: "Mar 25, 2024",
+      technologies: ["Microservices", "Kubernetes", "Istio", "Monitoring"],
+      url: "https://gitlab.com/your-username/online-boutique"
+    },
+    {
+      name: "online-boutique-gitops",
+      description: "GitOps implementation for Online Boutique using ArgoCD and Flux",
+      stars: 2,
+      lastUpdated: "2 weeks ago",
+      technologies: ["GitOps", "ArgoCD", "Flux", "Kubernetes", "Helm"],
+      url: "https://gitlab.com/your-username/online-boutique-gitops"
+    }
+  ];
+
   return (
     <section id="experience" className="py-20 bg-gradient-secondary">
       <div className="container mx-auto px-6">
@@ -122,6 +165,57 @@ const Experience = () => {
                     </ul>
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="secondary" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* GitLab Projects */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 flex items-center">
+              <GitBranch className="w-6 h-6 mr-3 text-primary" />
+              GitLab Projects
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {gitlabProjects.map((project, index) => (
+                <Card key={index} className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 hover:shadow-card group">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <CardTitle className="text-lg mb-2 flex items-center">
+                          <a 
+                            href={project.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="hover:text-primary transition-colors flex items-center group"
+                          >
+                            {project.name}
+                            <ExternalLink className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </a>
+                        </CardTitle>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                          <div className="flex items-center">
+                            <Star className="w-4 h-4 mr-1 text-yellow-500" />
+                            {project.stars}
+                          </div>
+                          <div className="flex items-center">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {project.lastUpdated}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="secondary" className="text-xs">
                           {tech}
                         </Badge>
