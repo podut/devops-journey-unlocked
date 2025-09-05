@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { 
   Cloud, 
   Container, 
@@ -23,123 +22,135 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Cloud Platforms",
-      icon: <Cloud className="w-6 h-6" />,
+      icon: <Cloud className="w-8 h-8" />,
       skills: [
-        { name: "Amazon Web Services (AWS)", level: 95 },
-        { name: "AWS EC2, VPC, IAM", level: 90 },
-        { name: "AWS CLI & SDK", level: 85 },
-        { name: "DigitalOcean", level: 80 }
-      ]
+        "Amazon Web Services (AWS)",
+        "AWS EC2, VPC, IAM",
+        "AWS CLI & SDK",
+        "DigitalOcean"
+      ],
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       title: "Containerization",
-      icon: <Container className="w-6 h-6" />,
+      icon: <Container className="w-8 h-8" />,
       skills: [
-        { name: "Docker", level: 95 },
-        { name: "Kubernetes", level: 90 },
-        { name: "Helm Charts", level: 85 },
-        { name: "Docker Compose", level: 90 }
-      ]
+        "Docker",
+        "Kubernetes",
+        "Helm Charts",
+        "Docker Compose"
+      ],
+      gradient: "from-purple-500 to-pink-500"
     },
     {
       title: "Infrastructure as Code",
-      icon: <Settings className="w-6 h-6" />,
+      icon: <Settings className="w-8 h-8" />,
       skills: [
-        { name: "Terraform", level: 90 },
-        { name: "Ansible", level: 85 },
-        { name: "AWS CloudFormation", level: 75 },
-        { name: "Infrastructure Automation", level: 88 }
-      ]
+        "Terraform",
+        "Ansible",
+        "AWS CloudFormation",
+        "Infrastructure Automation"
+      ],
+      gradient: "from-green-500 to-emerald-500"
     },
     {
       title: "CI/CD & Build Tools",
-      icon: <Wrench className="w-6 h-6" />,
+      icon: <Wrench className="w-8 h-8" />,
       skills: [
-        { name: "Jenkins", level: 90 },
-        { name: "GitLab CI/CD", level: 85 },
-        { name: "Maven & Gradle", level: 80 },
-        { name: "NPM & Build Tools", level: 85 }
-      ]
+        "Jenkins",
+        "GitLab CI/CD",
+        "Maven & Gradle",
+        "NPM & Build Tools"
+      ],
+      gradient: "from-orange-500 to-red-500"
     },
     {
       title: "Programming & Scripting",
-      icon: <Code className="w-6 h-6" />,
+      icon: <Code className="w-8 h-8" />,
       skills: [
-        { name: "Python", level: 90 },
-        { name: "Bash/Shell Scripting", level: 95 },
-        { name: "AWS Boto3", level: 85 },
-        { name: "JavaScript/Node.js", level: 80 }
-      ]
+        "Python",
+        "Bash/Shell Scripting",
+        "AWS Boto3",
+        "JavaScript/Node.js"
+      ],
+      gradient: "from-indigo-500 to-blue-500"
     },
     {
       title: "Version Control",
-      icon: <GitBranch className="w-6 h-6" />,
+      icon: <GitBranch className="w-8 h-8" />,
       skills: [
-        { name: "Git", level: 95 },
-        { name: "GitHub/GitLab", level: 90 },
-        { name: "Branching Strategies", level: 85 },
-        { name: "Merge Conflicts Resolution", level: 90 }
-      ]
+        "Git",
+        "GitHub/GitLab",
+        "Branching Strategies",
+        "Merge Conflicts Resolution"
+      ],
+      gradient: "from-teal-500 to-cyan-500"
     },
     {
       title: "Operating Systems",
-      icon: <Server className="w-6 h-6" />,
+      icon: <Server className="w-8 h-8" />,
       skills: [
-        { name: "Linux Administration", level: 95 },
-        { name: "Ubuntu/CentOS", level: 90 },
-        { name: "System Security", level: 85 },
-        { name: "Networking", level: 80 }
-      ]
+        "Linux Administration",
+        "Ubuntu/CentOS",
+        "System Security",
+        "Networking"
+      ],
+      gradient: "from-slate-500 to-gray-500"
     },
     {
       title: "Monitoring & Observability",
-      icon: <MonitorSpeaker className="w-6 h-6" />,
+      icon: <MonitorSpeaker className="w-8 h-8" />,
       skills: [
-        { name: "Prometheus", level: 85 },
-        { name: "Grafana", level: 85 },
-        { name: "AlertManager", level: 80 },
-        { name: "Application Monitoring", level: 83 }
-      ]
+        "Prometheus",
+        "Grafana",
+        "AlertManager",
+        "Application Monitoring"
+      ],
+      gradient: "from-yellow-500 to-orange-500"
     },
     {
       title: "DevSecOps & Security",
-      icon: <ShieldCheck className="w-6 h-6" />,
+      icon: <ShieldCheck className="w-8 h-8" />,
       skills: [
-        { name: "SAST/DAST/SCA", level: 90 },
-        { name: "OWASP Top 10", level: 95 },
-        { name: "DefectDojo", level: 85 },
-        { name: "GitLeaks", level: 90 }
-      ]
+        "SAST/DAST/SCA",
+        "OWASP Top 10",
+        "DefectDojo",
+        "GitLeaks"
+      ],
+      gradient: "from-red-500 to-pink-500"
     },
     {
       title: "Vulnerability Management",
-      icon: <ScanLine className="w-6 h-6" />,
+      icon: <ScanLine className="w-8 h-8" />,
       skills: [
-        { name: "Static Application Security Testing", level: 88 },
-        { name: "Dynamic Application Security Testing", level: 85 },
-        { name: "Software Composition Analysis", level: 90 },
-        { name: "CI/CD Security Integration", level: 92 }
-      ]
+        "Static Application Security Testing",
+        "Dynamic Application Security Testing",
+        "Software Composition Analysis",
+        "CI/CD Security Integration"
+      ],
+      gradient: "from-violet-500 to-purple-500"
     },
     {
       title: "Cloud Security",
-      icon: <Lock className="w-6 h-6" />,
+      icon: <Lock className="w-8 h-8" />,
       skills: [
-        { name: "AWS IAM & Security", level: 92 },
-        { name: "AWS SSM & Secrets Manager", level: 88 },
-        { name: "CloudTrail & CloudWatch", level: 90 },
-        { name: "Compliance as Code", level: 85 }
-      ]
+        "AWS IAM & Security",
+        "AWS SSM & Secrets Manager",
+        "CloudTrail & CloudWatch",
+        "Compliance as Code"
+      ],
+      gradient: "from-emerald-500 to-teal-500"
     },
     {
       title: "Kubernetes Security",
-      icon: <Eye className="w-6 h-6" />,
+      icon: <Eye className="w-8 h-8" />,
       skills: [
-        { name: "RBAC & K8s Security", level: 90 },
-        { name: "OPA Gatekeeper", level: 85 },
-        { name: "Istio Service Mesh", level: 80 },
-        { name: "Vault & Secrets Management", level: 88 }
-      ]
+        "RBAC & K8s Security",
+        "OPA Gatekeeper",
+        "Istio Service Mesh",
+        "Vault & Secrets Management"
+      ],
+      gradient: "from-cyan-500 to-blue-500"
     }
   ];
 
@@ -175,30 +186,45 @@ const Skills = () => {
 
           <DevSecOpsPipeline />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
             {skillCategories.map((category, index) => (
-              <Card key={index} className="border-border bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 hover:shadow-card">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <div className="p-2 bg-primary/10 rounded-lg text-primary mr-3">
-                      {category.icon}
+              <Card 
+                key={index} 
+                className="group relative overflow-hidden border-0 bg-gradient-to-br from-background/80 to-background/40 backdrop-blur-xl hover:from-background/90 hover:to-background/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/5" />
+                
+                <CardHeader className="relative z-10 pb-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className={`p-4 rounded-2xl bg-gradient-to-br ${category.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <div className="text-white">
+                        {category.icon}
+                      </div>
                     </div>
+                  </div>
+                  <CardTitle className="text-center text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                     {category.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
+                
+                <CardContent className="relative z-10 pt-0">
+                  <div className="space-y-3">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex}>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="text-foreground">{skill.name}</span>
-                          <span className="text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <Progress value={skill.level} className="h-2" />
+                      <div 
+                        key={skillIndex}
+                        className="flex items-center p-3 rounded-lg bg-background/20 backdrop-blur-sm border border-border/20 hover:bg-background/40 hover:border-primary/20 transition-all duration-300 group-hover:translate-x-1"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-primary mr-3 group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300" />
+                        <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+                          {skill}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </CardContent>
+                
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </Card>
             ))}
           </div>
