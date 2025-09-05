@@ -154,19 +154,6 @@ const Skills = () => {
     }
   ];
 
-  const certifications = [
-    "DevOps Professional Bootcamp",
-    "AWS Cloud Practitioner Track", 
-    "Kubernetes Administration",
-    "Terraform Infrastructure Automation",
-    "Docker Containerization Expert",
-    "Python for DevOps Automation",
-    "DevSecOps Fundamentals",
-    "OWASP Security Expert",
-    "AWS Security Specialist",
-    "Kubernetes Security Professional",
-    "Vulnerability Management Expert"
-  ];
 
   return (
     <section id="skills" className="py-20">
@@ -229,24 +216,6 @@ const Skills = () => {
             ))}
           </div>
 
-          <Card className="border-border bg-card/30 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Certifications & Training</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap justify-center gap-3">
-                {certifications.map((cert, index) => (
-                  <Badge 
-                    key={index} 
-                    variant="secondary" 
-                    className="text-sm py-2 px-4 bg-secondary/50 hover:bg-secondary/80 transition-colors"
-                  >
-                    {cert}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
