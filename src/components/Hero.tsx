@@ -18,6 +18,20 @@ const Hero = () => {
         <div className="h-full w-full bg-grid-pattern animate-pulse"></div>
       </div>
 
+      {/* Lightning Effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Lightning bolts */}
+        <div className="absolute top-20 left-10 w-1 h-32 bg-gradient-to-b from-primary via-accent to-transparent opacity-60 animate-pulse transform rotate-12 shadow-lg shadow-primary/50"></div>
+        <div className="absolute top-40 right-20 w-1 h-24 bg-gradient-to-b from-accent via-primary to-transparent opacity-40 animate-pulse transform -rotate-45 shadow-lg shadow-accent/50" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-1 h-20 bg-gradient-to-b from-primary via-accent to-transparent opacity-50 animate-pulse transform rotate-75 shadow-lg shadow-primary/50" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-60 right-1/3 w-1 h-28 bg-gradient-to-b from-accent via-primary to-transparent opacity-30 animate-pulse transform -rotate-30 shadow-lg shadow-accent/50" style={{ animationDelay: '0.5s' }}></div>
+        
+        {/* Electric sparks */}
+        <div className="absolute top-32 left-1/3 w-2 h-2 bg-primary rounded-full animate-ping shadow-lg shadow-primary/80" style={{ animationDelay: '0.3s' }}></div>
+        <div className="absolute bottom-32 right-1/4 w-1 h-1 bg-accent rounded-full animate-ping shadow-lg shadow-accent/80" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-48 left-2/3 w-2 h-2 bg-primary rounded-full animate-ping shadow-lg shadow-primary/80" style={{ animationDelay: '2.2s' }}></div>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
@@ -34,14 +48,29 @@ const Hero = () => {
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
-            Petru Alexandru
+          <h1 className="relative text-6xl md:text-8xl font-bold mb-6 leading-tight">
+            {/* Glowing text effect */}
+            <span className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-pulse">
+              <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50 animate-pulse"></span>
+              <span className="relative z-10">Petru Alexandru</span>
+            </span>
             <br />
-            <span className="text-5xl md:text-7xl">Podut</span>
+            <span className="relative inline-block text-5xl md:text-7xl bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+              <span className="absolute inset-0 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent blur-sm opacity-40 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
+              <span className="relative z-10">Podut</span>
+            </span>
+            
+            {/* Electric aura */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-xl opacity-60 animate-pulse pointer-events-none"></div>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 font-mono">
-            &lt; DevOps Engineer /&gt;
+          <p className="relative text-xl md:text-2xl text-muted-foreground mb-4 font-mono">
+            <span className="relative inline-block">
+              <span className="absolute inset-0 text-primary/50 blur-sm animate-pulse">&lt; DevOps Engineer /&gt;</span>
+              <span className="relative z-10">&lt; DevOps Engineer /&gt;</span>
+            </span>
+            {/* Typing cursor effect */}
+            <span className="ml-1 text-primary animate-ping">|</span>
           </p>
           
           <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed">
