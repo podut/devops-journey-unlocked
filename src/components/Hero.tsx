@@ -50,23 +50,67 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="min-w-[180px] shadow-glow">
+            <Button 
+              size="lg" 
+              className="min-w-[180px] shadow-glow"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Get In Touch
             </Button>
-            <Button variant="outline" size="lg" className="min-w-[180px]">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="min-w-[180px]"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               View My Work
             </Button>
           </div>
 
-          {/* Tech Stack Preview */}
-          <div className="flex flex-wrap justify-center gap-4 opacity-70">
-            {['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'Python', 'Ansible', 'Prometheus'].map((tech) => (
-              <span 
+          {/* Tech Stack Bubbles */}
+          <div className="relative flex flex-wrap justify-center gap-6 opacity-70 min-h-[120px] overflow-hidden">
+            {['AWS', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'Python', 'Ansible', 'Prometheus'].map((tech, index) => (
+              <div
                 key={tech}
-                className="px-3 py-1 text-sm bg-card border border-border rounded-full text-card-foreground hover:bg-accent/20 transition-colors cursor-default"
+                className={`
+                  group relative px-4 py-2 text-sm bg-gradient-to-br from-primary/20 to-accent/20 
+                  border border-primary/30 rounded-full text-foreground
+                  cursor-pointer transition-all duration-300 ease-out
+                  hover:scale-110 hover:shadow-lg hover:shadow-primary/25
+                  animate-bounce hover:animate-none
+                  backdrop-blur-sm
+                `}
+                style={{
+                  animationDelay: `${index * 0.2}s`,
+                  animationDuration: '3s'
+                }}
+                onMouseEnter={(e) => {
+                  const element = e.currentTarget;
+                  const randomX = (Math.random() - 0.5) * 200;
+                  const randomY = (Math.random() - 0.5) * 100;
+                  element.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${Math.random() * 360}deg) scale(1.2)`;
+                  element.style.opacity = '0.8';
+                }}
+                onMouseLeave={(e) => {
+                  const element = e.currentTarget;
+                  element.style.transform = 'translate(0, 0) rotate(0deg) scale(1)';
+                  element.style.opacity = '0.7';
+                }}
               >
-                {tech}
-              </span>
+                {/* Rotating glow effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-primary opacity-20 animate-spin" 
+                     style={{ animationDuration: '4s' }}></div>
+                
+                {/* Bubble shine effect */}
+                <div className="absolute top-1 left-1 w-2 h-2 bg-white/40 rounded-full animate-pulse"></div>
+                
+                {/* Text */}
+                <span className="relative z-10 font-medium">{tech}</span>
+                
+                {/* Floating particles */}
+                <div className="absolute -top-1 -right-1 w-1 h-1 bg-primary rounded-full animate-ping" 
+                     style={{ animationDelay: `${index * 0.3}s` }}></div>
+              </div>
             ))}
           </div>
         </div>
