@@ -48,35 +48,93 @@ const Hero = () => {
             </div>
           </div>
 
-          <h1 className="relative text-6xl md:text-8xl font-bold mb-6 leading-tight">
-            {/* Glowing text effect */}
-            <span className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-pulse">
-              <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50 animate-pulse"></span>
-              <span className="relative z-10">Petru Alexandru</span>
-            </span>
-            <br />
-            <span className="relative inline-block text-5xl md:text-7xl bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
-              <span className="absolute inset-0 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent blur-sm opacity-40 animate-pulse" style={{ animationDelay: '0.5s' }}></span>
-              <span className="relative z-10">Podut</span>
-            </span>
+          <h1 className="relative text-6xl md:text-8xl font-bold mb-6 leading-tight overflow-hidden">
+            {/* Gravitational text effect */}
+            <div className="relative">
+              {/* Petru - flies in from top-left */}
+              <span 
+                className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-[gravitational-entry_2s_ease-out_forwards]"
+                style={{ 
+                  animationDelay: '0.2s',
+                  transform: 'translate(-200px, -200px) rotate(-45deg) scale(0.3)',
+                  opacity: '0'
+                }}
+              >
+                <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50"></span>
+                <span className="relative z-10">Petru</span>
+              </span>
+              
+              <span className="mx-4"></span>
+              
+              {/* Alexandru - flies in from top-right */}
+              <span 
+                className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-[gravitational-entry_2s_ease-out_forwards]"
+                style={{ 
+                  animationDelay: '0.4s',
+                  transform: 'translate(300px, -250px) rotate(60deg) scale(0.2)',
+                  opacity: '0'
+                }}
+              >
+                <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50"></span>
+                <span className="relative z-10">Alexandru</span>
+              </span>
+              
+              <br />
+              
+              {/* Podut - flies in from bottom */}
+              <span 
+                className="relative inline-block text-5xl md:text-7xl bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent animate-[gravitational-entry_2s_ease-out_forwards]"
+                style={{ 
+                  animationDelay: '0.6s',
+                  transform: 'translate(-100px, 400px) rotate(-90deg) scale(0.1)',
+                  opacity: '0'
+                }}
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent blur-sm opacity-40"></span>
+                <span className="relative z-10">Podut</span>
+              </span>
+            </div>
             
-            {/* Electric aura */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-xl opacity-60 animate-pulse pointer-events-none"></div>
+            {/* Electric aura that appears after text settles */}
+            <div 
+              className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-xl opacity-0 animate-[fade-in_1s_ease-out_forwards] pointer-events-none"
+              style={{ animationDelay: '2.5s' }}
+            ></div>
           </h1>
           
-          <p className="relative text-xl md:text-2xl text-muted-foreground mb-4 font-mono">
-            <span className="relative inline-block">
-              <span className="absolute inset-0 text-primary/50 blur-sm animate-pulse">&lt; DevOps Engineer /&gt;</span>
+          {/* DevOps Engineer - flies in from right */}
+          <p className="relative text-xl md:text-2xl text-muted-foreground mb-4 font-mono overflow-hidden">
+            <span 
+              className="relative inline-block animate-[gravitational-entry_2.5s_ease-out_forwards]"
+              style={{ 
+                animationDelay: '0.8s',
+                transform: 'translate(500px, 0px) rotate(180deg) scale(0.3)',
+                opacity: '0'
+              }}
+            >
+              <span className="absolute inset-0 text-primary/50 blur-sm">&lt; DevOps Engineer /&gt;</span>
               <span className="relative z-10">&lt; DevOps Engineer /&gt;</span>
             </span>
-            {/* Typing cursor effect */}
-            <span className="ml-1 text-primary animate-ping">|</span>
+            {/* Typing cursor that appears after text */}
+            <span 
+              className="ml-1 text-primary opacity-0 animate-[fade-in_0.5s_ease-out_forwards]"
+              style={{ animationDelay: '3.3s' }}
+            >|</span>
           </p>
           
-          <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+          {/* Description - flies in from left */}
+          <p 
+            className="text-lg md:text-xl text-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed animate-[gravitational-entry_2.5s_ease-out_forwards]"
+            style={{ 
+              animationDelay: '1s',
+              transform: 'translate(-600px, 100px) rotate(-30deg) scale(0.4)',
+              opacity: '0'
+            }}
+          >
             Specialized in Cloud Infrastructure, Kubernetes, AWS, Terraform, Docker, Jenkins, 
             and Python automation. Building scalable, reliable systems that power modern applications.
           </p>
+          
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 

@@ -112,6 +112,24 @@ export default {
 						transform: 'translateY(0)'
 					}
 				},
+				'gravitational-entry': {
+					'0%': {
+						opacity: '0',
+						transform: 'var(--start-transform) scale(0.1)'
+					},
+					'50%': {
+						opacity: '0.7',
+						transform: 'translate(0, 0) rotate(0deg) scale(0.8)'
+					},
+					'80%': {
+						opacity: '0.9',
+						transform: 'translate(0, 0) rotate(0deg) scale(1.1)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translate(0, 0) rotate(0deg) scale(1)'
+					}
+				},
 				'terminal-typing': {
 					'0%': { width: '0' },
 					'100%': { width: '100%' }
@@ -121,6 +139,7 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
+				'gravitational-entry': 'gravitational-entry 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
 				'terminal-typing': 'terminal-typing 2s ease-in-out'
 			}
 		}
