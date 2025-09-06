@@ -51,7 +51,7 @@ const Hero = () => {
           <h1 className="relative text-6xl md:text-8xl font-bold mb-6 leading-tight overflow-hidden">
             {/* Gravitational text effect */}
             <div className="relative">
-              {/* Petru - flies in from top-left */}
+              {/* Petru Alexandru - flies in from top-left */}
               <span 
                 className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-[gravitational-entry_2s_ease-out_forwards]"
                 style={{ 
@@ -61,22 +61,7 @@ const Hero = () => {
                 }}
               >
                 <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50"></span>
-                <span className="relative z-10">Petru</span>
-              </span>
-              
-              <span className="mx-4"></span>
-              
-              {/* Alexandru - flies in from top-right */}
-              <span 
-                className="relative inline-block bg-gradient-primary bg-clip-text text-transparent animate-[gravitational-entry_2s_ease-out_forwards]"
-                style={{ 
-                  animationDelay: '0.4s',
-                  transform: 'translate(300px, -250px) rotate(60deg) scale(0.2)',
-                  opacity: '0'
-                }}
-              >
-                <span className="absolute inset-0 bg-gradient-primary bg-clip-text text-transparent blur-sm opacity-50"></span>
-                <span className="relative z-10">Alexandru</span>
+                <span className="relative z-10">Petru Alexandru</span>
               </span>
               
               <br />
