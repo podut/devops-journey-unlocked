@@ -26,10 +26,12 @@ export default {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-secondary': 'var(--gradient-secondary)',
 				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-mesh': 'var(--gradient-mesh)',
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
 				'card': 'var(--shadow-card)',
+				'neon': 'var(--shadow-neon)',
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',

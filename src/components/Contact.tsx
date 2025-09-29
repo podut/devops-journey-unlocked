@@ -43,8 +43,12 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Modern Gradient Mesh Background */}
+      <div className="absolute inset-0 bg-gradient-mesh opacity-80"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">Get In Touch</Badge>
@@ -60,11 +64,14 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="border-border bg-card/50 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl">Send a Message</CardTitle>
+            <Card className="glass-card hover-lift group relative overflow-hidden">
+              {/* Animated gradient border effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
+              
+              <CardHeader className="relative z-10">
+                <CardTitle className="text-2xl gradient-text">Send a Message</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium mb-2 block">First Name</label>
@@ -99,18 +106,18 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div className="space-y-8">
-              <Card className="border-border bg-card/50 backdrop-blur-sm">
+              <Card className="glass-card hover-lift shimmer">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Contact Information</CardTitle>
+                  <CardTitle className="text-2xl gradient-text">Contact Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <a
                       key={index}
                       href={info.href}
-                      className="flex items-center space-x-4 p-4 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors group"
+                      className="flex items-center space-x-4 p-4 rounded-lg glass group hover:-translate-y-1 transition-all duration-300"
                     >
-                      <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary/20 transition-colors">
+                      <div className="p-3 bg-gradient-primary rounded-xl text-primary-foreground group-hover:scale-110 group-hover:shadow-neon transition-all duration-300">
                         {info.icon}
                       </div>
                       <div>
@@ -122,9 +129,9 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-border bg-card/50 backdrop-blur-sm">
+              <Card className="glass-card hover-lift">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Follow Me</CardTitle>
+                  <CardTitle className="text-2xl gradient-text">Follow Me</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-4">
@@ -134,7 +141,7 @@ const Contact = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-4 bg-secondary/30 rounded-lg hover:bg-secondary/50 transition-colors ${social.color} group`}
+                        className={`flex-1 p-4 glass rounded-xl hover:shadow-neon transition-all duration-300 hover:-translate-y-1 ${social.color} group`}
                       >
                         <div className="flex items-center space-x-3">
                           {social.icon}
@@ -146,15 +153,15 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-border bg-card/50 backdrop-blur-sm">
+              <Card className="glass-card hover-lift gradient-border">
                 <CardHeader>
-                  <CardTitle className="text-xl">Availability</CardTitle>
+                  <CardTitle className="text-xl gradient-text">Availability</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm">Currently available for new projects</span>
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+                      <span className="text-sm font-medium">Currently available for new projects</span>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Open to freelance projects, consulting opportunities, and full-time positions.

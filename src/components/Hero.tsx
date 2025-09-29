@@ -89,7 +89,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-10 lg:mb-12 px-4">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto min-w-[160px] sm:min-w-[180px] shadow-glow text-sm sm:text-base"
+              className="w-full sm:w-auto min-w-[160px] sm:min-w-[180px] shadow-glow hover:shadow-neon hover:scale-105 transition-all duration-300 text-sm sm:text-base"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Get In Touch
@@ -97,8 +97,8 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="w-full sm:w-auto min-w-[160px] sm:min-w-[180px] text-sm sm:text-base"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto min-w-[160px] sm:min-w-[180px] glass hover:shadow-glow hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View My Work
             </Button>
