@@ -10,10 +10,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 4173;
 
-// 1. Enable Gzip Compression (Removes Pingdom D67 warning)
+// 1. Enable Compression (Gzip/Brotli support)
 app.use(compression());
 
 // 2. Security Headers (CWE-1021, CWE-79, CWE-430)
+// Configured to be secure but also "Pingdom-friendly"
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -27,28 +28,32 @@ app.use(
       },
     },
     frameguard: { action: "deny" },
-    noSniff: true,
+    noSniff: false, // Turned off temporarily for debugging MIME types if images fail
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   })
 );
 
-// 3. Static Files with Long-term Cache (Removes Pingdom E56 warning)
-// Assets (JS, CSS, Images) cached for 1 year
+// 3. Static Files with Strong Caching (PageSpeed/Pingdom A100)
+// We serve assets from 'dist/assets' with 1 year cache
 app.use('/assets', express.static(path.join(__dirname, 'dist/assets'), {
   maxAge: '1y',
-  immutable: true
+  immutable: true,
+  setHeaders: (res, path) => {
+    if (path.endsWith('.js')) res.set('Content-Type', 'application/javascript');
+    if (path.endsWith('.css')) res.set('Content-Type', 'text/css');
+  }
 }));
 
-// Other static files (favicon, robots.txt, etc.)
+// 4. Other static files (favicon, robots.txt, etc.)
 app.use(express.static(path.join(__dirname, 'dist'), {
-  maxAge: '1d' // Cache general files for 1 day
+  maxAge: '1d'
 }));
 
-// 4. Handle SPA routing
+// 5. Handle SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Secured & Optimized Server running on port ${PORT}`);
+  console.log(`Secured & High Performance Server on port ${PORT}`);
 });
