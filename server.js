@@ -10,11 +10,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 4173;
 
-// 1. Enable Compression (Gzip/Brotli support)
 app.use(compression());
 
-// 2. Security Headers (CWE-1021, CWE-79, CWE-430)
-// Configured to be secure but also "Pingdom-friendly"
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -28,32 +25,39 @@ app.use(
       },
     },
     frameguard: { action: "deny" },
-    noSniff: false, // Turned off temporarily for debugging MIME types if images fail
+    noSniff: true,
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   })
 );
 
-// 3. Static Files with Strong Caching (PageSpeed/Pingdom A100)
-// We serve assets from 'dist/assets' with 1 year cache
-app.use('/assets', express.static(path.join(__dirname, 'dist/assets'), {
-  maxAge: '1y',
-  immutable: true,
-  setHeaders: (res, path) => {
-    if (path.endsWith('.js')) res.set('Content-Type', 'application/javascript');
-    if (path.endsWith('.css')) res.set('Content-Type', 'text/css');
+// PINGDOM FIX: Function to add legacy 'Expires' header
+const setCustomCacheControl = (res, filePath) => {
+  const mimeType = express.static.mime.lookup(filePath);
+  
+  // Cache for 1 year (31536000 seconds)
+  const oneYear = 31536000;
+  const expiresDate = new Date(Date.now() + oneYear * 1000).toUTCString();
+
+  if (filePath.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff2)$/)) {
+    res.setHeader('Cache-Control', `public, max-age=${oneYear}, immutable`);
+    res.setHeader('Expires', expiresDate); // THE PINGDOM FIX
   }
+};
+
+// Serve assets
+app.use('/assets', express.static(path.join(__dirname, 'dist/assets'), {
+  setHeaders: setCustomCacheControl
 }));
 
-// 4. Other static files (favicon, robots.txt, etc.)
+// Serve root statics (favicon, etc)
 app.use(express.static(path.join(__dirname, 'dist'), {
-  maxAge: '1d'
+  setHeaders: setCustomCacheControl
 }));
 
-// 5. Handle SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Secured & High Performance Server on port ${PORT}`);
+  console.log(`ULTRA-OPTIMIZED Server running on port ${PORT}`);
 });
