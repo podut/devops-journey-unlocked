@@ -1,0 +1,5 @@
+# Security redirects
+http://yoursite.com/* https://yoursite.com/:splat 301!
+
+# SPA fallback
+/*    /index.html   200
