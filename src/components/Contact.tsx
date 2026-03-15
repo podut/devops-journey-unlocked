@@ -20,6 +20,8 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+const API_KEY = "7d2f9b8a1c5e4d3a0b9c8d7e6f5a4b3c";
+
 const Contact = () => {
   const { toast } = useToast();
   const {
@@ -143,7 +145,7 @@ const Contact = () => {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'x-api-key': '7d2f9b8a1c5e4d3a0b9c8d7e6f5a4b3c' 
+          'x-api-key': (window as any).N8N_KEY || "7d2f9b8a1c5e4d3a0b9c8d7e6f5a4b3c"
         },
         body: JSON.stringify(payload),
       });
