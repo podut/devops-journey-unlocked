@@ -21,7 +21,7 @@ import DevSecOpsPipeline from "./DevSecOpsPipeline";
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Cloud Platforms",
+      title: "AWS & Cloud Platforms",
       icon: <Cloud className="w-8 h-8" />,
       skills: [
         "Amazon Web Services (AWS)",
@@ -32,7 +32,7 @@ const Skills = () => {
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      title: "Containerization",
+      title: "Kubernetes & Docker",
       icon: <Container className="w-8 h-8" />,
       skills: [
         "Docker",
@@ -43,7 +43,7 @@ const Skills = () => {
       gradient: "from-purple-500 to-pink-500"
     },
     {
-      title: "Infrastructure as Code",
+      title: "Infrastructure Automation",
       icon: <Settings className="w-8 h-8" />,
       skills: [
         "Terraform",
@@ -54,7 +54,7 @@ const Skills = () => {
       gradient: "from-green-500 to-emerald-500"
     },
     {
-      title: "CI/CD & Build Tools",
+      title: "CI/CD Automation",
       icon: <Wrench className="w-8 h-8" />,
       skills: [
         "Jenkins",
@@ -65,7 +65,7 @@ const Skills = () => {
       gradient: "from-orange-500 to-red-500"
     },
     {
-      title: "Programming & Scripting",
+      title: "Python & Scripting",
       icon: <Code className="w-8 h-8" />,
       skills: [
         "Python",
@@ -76,7 +76,7 @@ const Skills = () => {
       gradient: "from-indigo-500 to-blue-500"
     },
     {
-      title: "Version Control",
+      title: "Version Control (Git)",
       icon: <GitBranch className="w-8 h-8" />,
       skills: [
         "Git",
@@ -87,7 +87,7 @@ const Skills = () => {
       gradient: "from-teal-500 to-cyan-500"
     },
     {
-      title: "Operating Systems",
+      title: "Linux & System Security",
       icon: <Server className="w-8 h-8" />,
       skills: [
         "Linux Administration",
@@ -98,7 +98,7 @@ const Skills = () => {
       gradient: "from-slate-500 to-gray-500"
     },
     {
-      title: "Monitoring & Observability",
+      title: "Cloud Monitoring",
       icon: <MonitorSpeaker className="w-8 h-8" />,
       skills: [
         "Prometheus",
@@ -131,7 +131,7 @@ const Skills = () => {
       gradient: "from-violet-500 to-purple-500"
     },
     {
-      title: "Cloud Security",
+      title: "AWS & Cloud Security",
       icon: <Lock className="w-8 h-8" />,
       skills: [
         "AWS IAM & Security",

@@ -141,7 +141,10 @@ const Contact = () => {
     try {
       const response = await fetch('https://n8n.petrupodut.dev/webhook/contact-form', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-api-key': '7d2f9b8a1c5e4d3a0b9c8d7e6f5a4b3c' 
+        },
         body: JSON.stringify(payload),
       });
 

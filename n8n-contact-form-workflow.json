@@ -1,0 +1,112 @@
+{
+  "name": "Secure Contact Form Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact-form",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [-500, -80],
+      "id": "7e2b1b09-d233-4ad1-aae0-6c15b30e8d65"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.headers['x-api-key'] }}",
+              "operation": "equal",
+              "value2": "7d2f9b8a1c5e4d3a0b9c8d7e6f5a4b3c"
+            }
+          ]
+        }
+      },
+      "name": "Check Auth Header",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [-300, -80],
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "FirstName", "value": "={{ $json.body.firstName.substring(0, 50) }}" },
+            { "name": "LastName", "value": "={{ $json.body.lastName.substring(0, 50) }}" },
+            { "name": "Email", "value": "={{ $json.body.email.toLowerCase().trim() }}" },
+            { "name": "Subject", "value": "={{ $json.body.subject.substring(0, 100) }}" },
+            { "name": "Message", "value": "={{ $json.body.message.substring(0, 1000) }}" },
+            { "name": "Website", "value": "={{ $json.body.website }}" }
+          ]
+        }
+      },
+      "name": "Sanitize & Truncate",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-100, -80],
+      "id": "b78ea8e3-55b4-4282-8e8e-6439ef2b071e"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{ $json.Website }}", "operation": "isEmpty" },
+            { "value1": "={{ $json.Email }}", "operation": "regex", "value2": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" }
+          ]
+        },
+        "combineOperation": "all"
+      },
+      "name": "Verify Bot & Email",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [150, -80],
+      "id": "ed28567e-2a83-406a-aa34-9461f833e2b2"
+    },
+    {
+      "parameters": {
+        "dataTableId": { "__rl": true, "value": "pDxFWhiF0v6Ka1Mo", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.FirstName }} {{ $json.LastName }}",
+            "clientId": "={{ $('Webhook').item.json.headers['x-forwarded-for'] || $('Webhook').item.json.headers['x-real-ip'] }}",
+            "timestamp": "={{ new Date().toLocaleString('ro-RO') }}",
+            "Message": "={{ $json.Message }}",
+            "Email": "={{ $json.Email }}"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [400, -150],
+      "id": "be27b505-f584-454a-b93f-4b532248efbd",
+      "name": "Secure Log"
+    },
+    {
+      "parameters": {
+        "sendTo": "podutz1234@gmail.com",
+        "subject": "=🔒 [SECURE] Mesaj nou: {{ $json.FirstName }}",
+        "message": "=Salut Petru,\n\nAi primit un mesaj securizat prin n8n.\n\nExpeditor: {{ $json.FirstName }} {{ $json.LastName }}\nEmail: {{ $json.Email }}\n\nMesaj:\n--------------------------\n{{ $json.Message }}\n--------------------------\n\nInfo Tehnice:\nIP: {{ $json.clientId }}\nData: {{ $json.timestamp }}",
+        "options": { "appendAttribution": false }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [650, -150],
+      "id": "934009f0-be80-4a2c-9d39-0c6d371afe74",
+      "name": "Send Secure Email"
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Check Auth Header", "type": "main", "index": 0 }]] },
+    "Check Auth Header": { "main": [[{ "node": "Sanitize & Truncate", "type": "main", "index": 0 }]] },
+    "Sanitize & Truncate": { "main": [[{ "node": "Verify Bot & Email", "type": "main", "index": 0 }]] },
+    "Verify Bot & Email": { "main": [[{ "node": "Secure Log", "type": "main", "index": 0 }]] },
+    "Secure Log": { "main": [[{ "node": "Send Secure Email", "type": "main", "index": 0 }]] }
+  }
+}

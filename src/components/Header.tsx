@@ -24,18 +24,19 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Visit my GitHub profile" onClick={() => window.open('https://github.com/podut', '_blank')}>
               <Github className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Visit my LinkedIn profile" onClick={() => window.open('https://linkedin.com/in/petrupodut', '_blank')}>
               <Linkedin className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Send me an email" onClick={() => window.location.href = 'mailto:contact@petrupodut.dev'}>
               <Mail className="w-5 h-5" />
             </Button>
             <a
               href="/Europass%20CV%20template-completat.doc"
               download
+              title="Download Petru Podut Resume"
               className="hidden sm:flex items-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
             >
               <Download className="w-4 h-4 mr-2" />

@@ -89,6 +89,11 @@ const Footer = () => {
               <p className="text-sm text-muted-foreground mb-4 md:mb-0">
                 © 2026 Petru Alexandru Podut. All rights reserved.
               </p>
+              <div className="flex space-x-6">
+                <a href="/sitemap.xml" className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-4">
+                  Sitemap
+                </a>
+              </div>
             </div>
           </div>
         </div>

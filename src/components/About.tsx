@@ -44,7 +44,7 @@ const About = () => {
             <Badge variant="outline" className="mb-4">About Me</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               DevOps Engineer & 
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Cloud Architect</span>
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Cloud Infrastructure Architect</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               With extensive experience in DevOps practices and cloud technologies, I specialize in building 
