@@ -3,10 +3,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import TerminalSection from "@/components/TerminalSection";
 import Skills from "@/components/Skills";
-import EngineeringPrinciples from "@/components/EngineeringPrinciples";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -16,9 +14,13 @@ const Index = () => {
       <About />
       <TerminalSection />
       <Skills />
-      <EngineeringPrinciples />
       <Experience />
       <Contact />
+      <section className="py-20 bg-accent/5 flex justify-center">
+        <Link to="/blog" className="text-primary hover:underline font-mono">
+          view_all_blog_posts()
+        </Link>
+      </section>
       <Footer />
     </div>
   );
