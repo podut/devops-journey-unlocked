@@ -36,6 +36,32 @@ npm run dev
 
 **Use GitHub Codespaces**
 
+## DevOps & Deployment Insights
+
+### 🚀 Build Process
+Acest proiect folosește un sistem de automatizare pentru SEO și rute. Pentru un deployment corect pe Coolify/Vercel, urmează acești pași local:
+
+1. **Curățare și Build:**
+   ```sh
+   npm run build
+   ```
+   *Acest pas generează automat și sitemap.xml prin scriptul `generate-sitemap.js`.*
+
+2. **Sincronizare rădăcină (pentru Coolify Static):**
+   Deoarece Coolify servește fișierele din rădăcina branch-ului, fișierele din `dist/` trebuie copiate în root:
+   ```sh
+   xcopy dist\* . /E /Y /H
+   ```
+
+### ⚠️ Reguli Critice (Anti-Gap)
+* **index.html:** Trebuie să conțină MEREU `<script type="module" src="/src/main.tsx"></script>`. Nu înlocui manual cu fișiere din `assets/` în codul sursă; Vite se ocupă de asta la build.
+* **Rute noi:** Când adaugi o pagină nouă, asigură-te că este importată în `App.tsx` și că ai un link către ea (chiar și ascuns) în `Index.tsx` pentru a preveni Tree Shaking-ul agresiv al Vite.
+* **Sitemap:** Nu edita manual `sitemap.xml`. Orice articol nou adăugat în `src/content/blog/*.md` va fi inclus automat la următorul build.
+
+### 📁 Structură Blog
+* Articolele se scriu în `src/content/blog/` sub formă de fișiere `.md`.
+* Fiecare fișier trebuie să aibă un header de tip Frontmatter (title, date, description, tags).
+
 ## What technologies are used for this project?
 
 This project is built with:
