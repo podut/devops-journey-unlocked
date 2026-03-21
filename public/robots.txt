@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /*.doc$
+Disallow: /*.docx$
 
 Sitemap: https://petrupodut.dev/sitemap.xml
