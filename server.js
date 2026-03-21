@@ -44,6 +44,11 @@ const setCustomCacheControl = (res, filePath) => {
   }
 };
 
+// Serve specific SEO files directly
+app.get(['/sitemap.xml', '/robots.txt'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', req.path));
+});
+
 // Serve assets
 app.use('/assets', express.static(path.join(__dirname, 'dist/assets'), {
   setHeaders: setCustomCacheControl
