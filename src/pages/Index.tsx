@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import TerminalSection from "@/components/TerminalSection";
 import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 
